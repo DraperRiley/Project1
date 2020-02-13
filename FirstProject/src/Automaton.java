@@ -19,19 +19,29 @@ public class Automaton {
 		
 	}
 	
-	public boolean[] getState() {}
+	public boolean[] getState() {
+		return null;
+	}
 	
-	public String getStateString(int stepNum) {}
+	public String getStateString(int stepNum) {
+		return null;
+	}
 	
-	public String toString() {}
+	public String toString() {
+		return null;
+	}
 	
 	public void save(String filename) {}
 	
-	public char getFalseSymbol() {}
+	public char getFalseSymbol() {
+		return 'a';
+	}
 	
 	public void setFalseSymbol(char symbol) {}
 	
-	public char getTrueSymbol() {}
+	public char getTrueSymbol() {
+		return 'a';
+	}
 	
 	public void setTrueSymbol(char symbol) {}
 	
