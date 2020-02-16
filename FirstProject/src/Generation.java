@@ -4,7 +4,8 @@ import java.util.ArrayList;
 public class Generation {
 
 	private ArrayList<Cell> ecaGeneration;
-	private String generationString;
+	private String generationString = "";
+	private boolean[] generationArray;
 	
 	public Generation(boolean[] initState) {
 		
@@ -26,17 +27,28 @@ public class Generation {
 		
 		for(int i = 0; i < ecaGeneration.size(); ++i) {
 			
-			if(ecaGeneration.get(i).getState() == true) {
-				generationString += "1";
+			if(ecaGeneration.get(i).getState() == false) {
+				generationString += "0";
 			}
 			else {
-				generationString += "0";
+				generationString += "1";
 			}
 			
 		}
 		
 		
 		return generationString;
+	}
+	
+	public boolean[] toBooleanArray() {
+		
+		generationArray = new boolean[ecaGeneration.size()];
+		
+		for(int i = 0; i < generationArray.length; ++i) {
+			generationArray[i] = ecaGeneration.get(i).getState();
+		}
+		
+		return generationArray;
 	}
 	
 }

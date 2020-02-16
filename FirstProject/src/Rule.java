@@ -36,4 +36,10 @@ public class Rule {
 		return behaviorArray;
 	}
 	
+	public String getString() {
+		
+		return binaryNum;
+		
+	}
+	
 }
