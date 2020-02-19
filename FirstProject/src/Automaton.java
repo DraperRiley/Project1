@@ -27,7 +27,7 @@ public class Automaton {
 		this.falseSymbol = '0';
 		this.trueSymbol = '1';
 		this.initGeneration = new Generation(initState);
-		this.generationsString += this.initGeneration.getGenerationString() + "\n";
+		this.generationsString += this.initGeneration.getGenerationString();
 		this.currentStateString = this.initGeneration.getGenerationString();
 		this.currentStateArray = initGeneration.toBooleanArray();
 		
@@ -60,7 +60,7 @@ public class Automaton {
 		
 		reader.close();
 		this.initGeneration = new Generation(initState);
-		this.generationsString += this.initGeneration.getGenerationString() + "\n";
+		this.generationsString += this.initGeneration.getGenerationString();
 		this.currentStateString = this.initGeneration.getGenerationString();
 		this.currentStateArray = initGeneration.toBooleanArray();
 		
@@ -132,7 +132,7 @@ public class Automaton {
 			}
 			
 			newGeneration = new Generation(this.currentStateArray);
-			this.generationsString += newGeneration.getGenerationString() + "\n";
+			this.generationsString += "\n" +newGeneration.getGenerationString();
 			this.currentStateString = newGeneration.getGenerationString();
 			
 		}
@@ -182,7 +182,13 @@ public class Automaton {
 	
 	@Override
 	public String toString() {
-		return this.generationsString;
+		
+		String replace = new String(this.generationsString);
+		
+		replace = replace.replace('0', getFalseSymbol());
+		replace = replace.replace('1', getTrueSymbol());
+		
+		return replace;
 	}
 	
 	public void save(String filename) throws IOException, FileNotFoundException {

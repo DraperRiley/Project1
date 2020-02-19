@@ -11,15 +11,16 @@ public class Rule {
 			System.out.println("Rule must be between 0 and 255.");
 			System.out.println("Rule set to 0");
 			
-			this.binaryNum = String.format("%08d", Integer.parseInt(Integer.toBinaryString(22)));
+			this.binaryNum = String.format("%08d", Integer.parseInt(Integer.toBinaryString(0)));
 			this.decimalNum = Integer.toString(0);
 			
 		}
 		else {
 			
-			this.binaryNum = String.format("%08d", Integer.parseInt(Integer.toBinaryString(22)));
+			this.binaryNum = String.format("%08d", Integer.parseInt(Integer.toBinaryString(decimalNum)));
 			this.decimalNum = Integer.toString(decimalNum);
-		
+			
+			
 		}
 	}
 	
@@ -38,7 +39,7 @@ public class Rule {
 	
 	public String getString() {
 		
-		return binaryNum;
+		return this.binaryNum;
 		
 	}
 	
