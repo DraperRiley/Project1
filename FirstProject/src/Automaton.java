@@ -6,19 +6,73 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
 
+/**
+ * A class used to create Elementary Cellular Automata using a collection of classes.
+ * Automata class is used to create and evolve the Elementary Cellular Automata as well
+ * as get various information.
+ * @author Riley Draper
+ * @version 1.0
+ *
+ */
+
 public class Automaton {
 
+	/**
+	 * The false symbol. Can be chosen.
+	 */
 	private char falseSymbol;
+	
+	/**
+	 * The true symbol. Can be chosen.
+	 */
 	private char trueSymbol;
+	
+	/**
+	 * The number from 0 to 255 that determines the evolutionary pattern of the Automata.
+	 */
 	private int ruleNum;
+	
+	/**
+	 * A boolean array used to set the initial state of the "Zero" evolution. True is black, false is white.
+	 */
 	private boolean[] initState;
+	
+	/**
+	 * A counter that keeps track of the total steps.
+	 */
 	private int steps;
+	
+	/**
+	 * A String that contains all the evolutions on separate lines.
+	 */
 	private String generationsString = "";
+	
+	/**
+	 * A string that holds the current generation. Currently unused.
+	 */
 	private String currentStateString = "";
+	
+	/**
+	 * A boolean array that holds the current state using true and false values. True is black, false is white.
+	 */
 	private boolean[] currentStateArray;
+	
+	/**
+	 * A Generation type that contains the current generation of cellular automata.
+	 */
 	private Generation initGeneration;
+	
+	/**
+	 * Uses the rule class to store the rule which defines the cellular automata.
+	 */
 	private Rule ecaRule;
 	
+	/**
+	 * Constructor which initializes an automata using a rule and an array of type boolean representing the initial state of generation zero.
+	 * 
+	 * @param ruleNum the rule number from 0 to 255 that dictates the behavior of the automata
+	 * @param initState initial state of the zero generation
+	 */
 	public Automaton(int ruleNum, boolean[] initState) {
 		
 		this.ruleNum = ruleNum;
@@ -34,6 +88,13 @@ public class Automaton {
 		
 	}
 	
+	/**
+	 * Creates an automata using information from a file.
+	 * 
+	 * @param filename the name of the file including the file extension
+	 * @throws FileNotFoundException thrown if file cannot be opened
+	 * @throws IOException thrown if Scanner cannot be used
+	 */
 	public Automaton(String filename) throws FileNotFoundException, IOException {
 		
 		Scanner reader = new Scanner(new FileReader(filename));
@@ -66,10 +127,18 @@ public class Automaton {
 		
 	}
 	
+	/**
+	 * Returns the rule number
+	 * @return the rule number of the automata
+	 */
 	public int getRuleNum() {
 		return ruleNum;
 	}
 	
+	/**
+	 * Evolves the automata a given number of steps.
+	 * @param steps the number of steps to evolve the automata
+	 */
 	public void evolve(int steps) {
 		
 		this.steps += steps;
@@ -139,10 +208,21 @@ public class Automaton {
 		
 	}
 	
+	/**
+	 * Gets the total number of steps the automata has been evolved.
+	 * @return int value representing total number of steps
+	 */
 	public int getTotalSteps() {
 		return this.steps;
 	}
 	
+	
+	/**
+	 * Gets a boolean array representing the automata at a given step.
+	 * 
+	 * @param stepNum step num to get state of
+	 * @return boolean array representing the state at that step
+	 */
 	public boolean[] getState(int stepNum) {
 		
 		Scanner stepScan = new Scanner(generationsString);
@@ -163,6 +243,12 @@ public class Automaton {
 		return stepBool;
 	}
 	
+	/**
+	 * Gets the state of the automata at a given step as a string.
+	 * 
+	 * @param stepNum int desired step
+	 * @return A string representing the state at a given step
+	 */
 	public String getStateString(int stepNum) {
 		
 		Scanner stepScan = new Scanner(generationsString);
@@ -180,6 +266,9 @@ public class Automaton {
 		return stepString;
 	}
 	
+	/**
+	 * Returns a string of all generations using the given true and false symbols.
+	 */
 	@Override
 	public String toString() {
 		
@@ -191,6 +280,13 @@ public class Automaton {
 		return replace;
 	}
 	
+	/**
+	 * Saves all evolutions of the automata to a given file.
+	 * 
+	 * @param filename name of file including extension
+	 * @throws IOException if FileWriter encounters error
+	 * @throws FileNotFoundException if file cannot be opened
+	 */
 	public void save(String filename) throws IOException, FileNotFoundException {
 		
 		FileWriter writer = new FileWriter(new File(filename));
@@ -200,18 +296,38 @@ public class Automaton {
 		writer.close();
 	}
 	
+	/**
+	 * Returns the given false symbol. Default 0.
+	 * 
+	 * @return the false symbol as a char
+	 */
 	public char getFalseSymbol() {
 		return this.falseSymbol;
 	}
 	
+	/**
+	 * Set the false symbol to a desired character.
+	 * 
+	 * @param symbol desired char
+	 */
 	public void setFalseSymbol(char symbol) {
 		this.falseSymbol = symbol;
 	}
 	
+	/**
+	 * Return the given true symbol. Default 1.
+	 * 
+	 * @return the true symbol as a char
+	 */
 	public char getTrueSymbol() {
 		return this.trueSymbol;
 	}
 	
+	/**
+	 * Set the true symbol to a desired character.
+	 * 
+	 * @param symbol desired char
+	 */
 	public void setTrueSymbol(char symbol) {
 		this.trueSymbol = symbol;
 	}

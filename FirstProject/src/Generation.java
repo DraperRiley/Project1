@@ -1,12 +1,32 @@
 import java.util.ArrayList;
 
-
+/**
+ * A class representing a generation of boolean values representing a step of an automata.
+ * @author Riley Draper
+ * @version 1.0
+ */
 public class Generation {
 
+	/**
+	 * An ArrayList of cells.
+	 */
 	private ArrayList<Cell> ecaGeneration;
+	
+	/**
+	 * A string representing the state of the generation.
+	 */
 	private String generationString = "";
+	
+	/**
+	 * A boolean array representing the state of the generation.
+	 */
 	private boolean[] generationArray;
 	
+	/**
+	 * Initialize a generation given a boolean array.
+	 * 
+	 * @param initState boolean[] array representing the state of cells.
+	 */
 	public Generation(boolean[] initState) {
 		
 		ecaGeneration =  new ArrayList<Cell>();
@@ -19,10 +39,21 @@ public class Generation {
 		
 	}
 	
+	/**
+	 * Returns a Cell at a given index in the generation.
+	 * 
+	 * @param index location of desired cell
+	 * @return a cell at given index
+	 */
 	public Cell getCell(int index) {
 		return ecaGeneration.get(index);
 	}
 	
+	/**
+	 * Get a string representing the states of the generation.
+	 * 
+	 * @return a String of the generation
+	 */
 	public String getGenerationString() {
 		
 		for(int i = 0; i < ecaGeneration.size(); ++i) {
@@ -40,6 +71,11 @@ public class Generation {
 		return generationString;
 	}
 	
+	/**
+	 * Get a boolean array of the generation.
+	 * 
+	 * @return a boolean array
+	 */
 	public boolean[] toBooleanArray() {
 		
 		generationArray = new boolean[ecaGeneration.size()];
